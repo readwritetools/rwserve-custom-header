@@ -1,6 +1,6 @@
 !blue 2.0
 
-//good $PLUGIN-PATH='/srv/rwserve-plugins/rwserve-custom-header/dist/index.js'
+//good $PLUGIN-PATH='/srv/rwserve-plugins/node_modules/rwserve-custom-header/dist/index.js'
 
 $PLUGIN-PATH='/palau/plugin/rwserve-custom-header/dbg/index.js'		// test
 
