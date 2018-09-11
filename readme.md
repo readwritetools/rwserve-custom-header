@@ -7,7 +7,7 @@
 
 <a href='https://rwserve.readwritetools.com'><img src='./img/rwserve.png' width=80 align=right /></a>
 
-###### *clacks-overhead: GNU Terry Pratchett *
+###### clacks-overhead: GNU Terry Pratchett
 
 # RWSERVE Custom Header
 
@@ -29,6 +29,8 @@ Error messages are perhaps the most common use for custom headers, but other
 uses related the server's state; resource metadata; alternative content; and so
 forth, are possible.
 
+#### Customization
+
 This plugin is open source and can be used as is, or repurposed into something
 less whimsical than just "Hello World!", such as:
 
@@ -38,6 +40,16 @@ less whimsical than just "Hello World!", such as:
    * Providing custom headers in alternative languages to advertise non-obvious
       features of your website.
 
+### Download
+
+The plugin module is available from <a href='https://www.npmjs.com/package/rwserve-custom-header'>NPM</a>
+. Before proceeding, you should already have `Node.js` and `RWSERVE` configured and
+tested.
+
+This module should be installed on your web server in a well-defined place, so
+that it can be discovered by `RWSERVE`. The standard place for public domain
+plugins is `/srv/rwserve-plugins`.
+
 <pre>
 cd /srv/rwserve-plugins
 npm install rwserve-custom-header
@@ -46,8 +58,8 @@ npm install rwserve-custom-header
 ### Configuration is Everything
 
 Make the software available by declaring it in the `plugins` section of your
-configuration file. For detailed instructions on how to do this, refer to the <a href='https://rwserve.readwritetools.com/plugins.blue'>plugins</a> documentation
-on the `Read Write Tools HTTP/2 Server` website.
+configuration file. For detailed instructions on how to do this, refer to the <a href='https://rwserve.readwritetools.com/plugins.blue'>plugins</a>
+documentation on the `Read Write Tools HTTP/2 Server` website.
 
 #### TL;DR
 
@@ -95,6 +107,22 @@ $CERTIFICATE='/etc/pki/tls/certs/localhost.crt'
 $DOCUMENTS-PATH='/srv/rwserve/configuration-docs'
 </pre>
 
+#### Deployment
+
+Once you've tested the plugin and are ready to go live, adjust your production
+web server's configuration in `/etc/rwserve/rwserve.conf` and restart it using `systemd`
+. . .
+
+<pre>
+[user@host ~]# systemctl restart rwserve
+</pre>
+
+. . . then monitor its request/response activity with `journald`.
+
+<pre>
+[user@host ~]# journalctl -u rwserve -ef
+</pre>
+
 ### Prerequisites
 
 This is a plugin for the **Read Write Tools HTTP/2 Server**, which works on Linux
@@ -117,7 +145,7 @@ platforms. Windows, MacOS and BSD are not supported.
 
 <table>
 	<tr><th>Lessons</th></tr>
-	<tr><td>This plugin demonstrates a basic pattern that many plugins follow: <ul><li>Accessing configuration variables from the plugin.</li> <li>Omitting any calls to <code>setStatusCode()</code>, thus allowing the full request/response processing sequence to continue unimpeded.</li> </ul> Find other plugins for the <code>Read Write Tools HTTP/2 Server</code> using <a href='https://npmsearch.com?q=author:readwritetools'>npmsearch</a> with these keywords: <kbd>rwserve</kbd>, <kbd>http/2</kbd>, <kbd>plugin</kbd>. </td></tr>
+	<tr><td>This plugin demonstrates a basic pattern that many plugins follow: <ul><li>Accessing configuration variables from the plugin.</li> <li>Omitting any calls to <code>setStatusCode()</code>, thus allowing the full request/response processing sequence to continue unimpeded.</li> </ul> Find other plugins for the <code>Read Write Tools HTTP/2 Server</code> using <a href='https://www.npmjs.com/search?q=keywords:rwserve'>npm</a> with these keywords: <kbd>rwserve</kbd>, <kbd>http2</kbd>, <kbd>plugins</kbd>. </td></tr>
 </table>
 
 <p align=center><a href='https://readwritetools.com'><img src='./img/rwtools.png' width=80 /></a></p>

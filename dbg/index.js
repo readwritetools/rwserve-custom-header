@@ -1,6 +1,6 @@
 //=============================================================================
 //
-// File:         rwserve-custom-header/index.js
+// File:         rwserve-custom-header/src/index.js
 // Language:     ECMAScript 2015
 // Copyright:    Read Write Tools © 2018
 // License:      MIT License
