@@ -16,7 +16,7 @@
 /*
 	plugins {
 		rwserve-custom-header {
-			location `/srv/rwserve-plugins/rwserve-custom-header.class.js`
+			location `/srv/rwserve-plugins/node_modules/rwserve-custom-header/dist/index.js`
 			config {
 				header-name   clacks-overhead
 				header-value  GNU Terry Pratchett
@@ -34,14 +34,15 @@ var log = require('rwserve-plugin-sdk').log;
 module.exports = class RwserveCustomHeader {
 
 	constructor(hostConfig) {
-		this.hostname    = hostConfig.hostname;
-		this.headerName  = hostConfig.pluginsConfig.rwserveCustomHeader.headerName;		// clacks-overhead
-		this.headerValue = hostConfig.pluginsConfig.rwserveCustomHeader.headerValue;	// GNU Terry Pratchett
+		this.hostname      = hostConfig.hostname;
+		this.pluginVersion = hostConfig.pluginsConfig.rwserveCustomHeader.pluginVersion;		
+		this.headerName    = hostConfig.pluginsConfig.rwserveCustomHeader.headerName;		// clacks-overhead
+		this.headerValue   = hostConfig.pluginsConfig.rwserveCustomHeader.headerValue;		// GNU Terry Pratchett
     	Object.seal(this);
 	}
 	
 	async startup() {
-		log.debug('RwserveCustomHeader', 'v1.0.0; © 2018 Read Write Tools; MIT License'); 
+		log.debug('RwserveCustomHeader', `version ${this.pluginVersion}; © 2018 Read Write Tools; MIT License`); 
 	}
 	
 	async shutdown() {
