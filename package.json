@@ -1,6 +1,6 @@
 {
   "name": "rwserve-custom-header",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "RWSERVE plugin to add a custom header to outgoing messages",
   "author": "Read Write Tools",
   "license": "MIT",
